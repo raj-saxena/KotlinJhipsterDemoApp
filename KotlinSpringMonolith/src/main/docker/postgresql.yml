@@ -1,0 +1,11 @@
+version: '2'
+services:
+  kotlinspringmonolith-postgresql:
+    image: postgres:11.5
+    # volumes:
+    #     - ~/volumes/jhipster/KotlinSpringMonolith/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=KotlinSpringMonolith
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432
