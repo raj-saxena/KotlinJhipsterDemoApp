@@ -7,13 +7,17 @@ import javax.servlet.FilterRegistration
 import javax.servlet.Servlet
 import javax.servlet.ServletException
 import javax.servlet.ServletRegistration
+import org.h2.server.web.WebServlet
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
 import org.mockito.Mockito.spy
+import org.mockito.Mockito.verify
 import org.springframework.http.HttpHeaders
 import org.springframework.mock.env.MockEnvironment
 import org.springframework.mock.web.MockServletContext
@@ -56,6 +60,9 @@ class WebConfigurerTest {
     fun testStartUpProdServletContext() {
         env.setActiveProfiles(JHipsterConstants.SPRING_PROFILE_PRODUCTION)
         webConfigurer.onStartup(servletContext)
+
+        verify(servletContext, never())
+            .addServlet(ArgumentMatchers.eq("H2Console"), any(WebServlet::class.java))
     }
 
     @Test
@@ -63,6 +70,9 @@ class WebConfigurerTest {
     fun testStartUpDevServletContext() {
         env.setActiveProfiles(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
         webConfigurer.onStartup(servletContext)
+
+        verify(servletContext)
+            .addServlet(ArgumentMatchers.eq("H2Console"), any(WebServlet::class.java))
     }
 
     @Test

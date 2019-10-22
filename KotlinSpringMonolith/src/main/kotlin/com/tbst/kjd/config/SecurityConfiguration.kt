@@ -33,6 +33,7 @@ class SecurityConfiguration(
     override fun configure(web: WebSecurity?) {
         web!!.ignoring()
             .antMatchers(HttpMethod.OPTIONS, "/**")
+            .antMatchers("/h2-console/**")
             .antMatchers("/swagger-ui/index.html")
             .antMatchers("/test/**")
     }

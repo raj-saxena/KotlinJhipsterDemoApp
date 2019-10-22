@@ -13,14 +13,14 @@
     "cacheProvider": "no",
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "postgresql",
+    "devDatabaseType": "h2Disk",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": true,
-    "jwtSecretKey": "ZjIxNGM5ZTY5MGEzYjY0YjYwZDdiZWViZTA0NzJiZDE2M2Q4OWZhNzhlYWFlMmY2NjU3M2NjOGQ2ZWUwNzdhNzU4YmZmZTBmZDJhZjA5NTlhYjViZDE0OWU4M2ZmNGZlMThkOTQ1ZWRkZGY3YzdjZmQ5NzBiNzRhZDZmOWJjNDk=",
+    "jwtSecretKey": "MWJjMDE0NjYyNzNlODE1M2I4ZjViYzk0OWVjZWI5ZDdlYmM0ZmZkYjJjZGFiNGMxMzgwZDdjN2ZhNDFkZjBjNmYxMmYxYTA3MjQwYjgzZDAzOWNhZDBiOWI0ZWQ1MDU4ZDNhYTFjMjQ0YzhjYjIxMGFhNTdlZWQ5N2EyMjU3MmM=",
     "embeddableLaunchScript": false
   },
   "generator-jhipster": {

@@ -29,6 +29,7 @@ spring:
   devtools:
     restart:
       enabled: true
+      additional-exclude: .h2.server.properties
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
   jackson:
@@ -36,15 +37,18 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/KotlinSpringMonolith
+    url: jdbc:h2:file:./build/h2db/db/kotlinspringmonolith;DB_CLOSE_DELAY=-1
     username: KotlinSpringMonolith
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
+  h2:
+    console:
+      enabled: false
   jpa:
-    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
-    database: POSTGRESQL
+    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
+    database: H2
     show-sql: true
     properties:
       hibernate.id.new_generator_mappings: true
@@ -87,7 +91,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: ZjIxNGM5ZTY5MGEzYjY0YjYwZDdiZWViZTA0NzJiZDE2M2Q4OWZhNzhlYWFlMmY2NjU3M2NjOGQ2ZWUwNzdhNzU4YmZmZTBmZDJhZjA5NTlhYjViZDE0OWU4M2ZmNGZlMThkOTQ1ZWRkZGY3YzdjZmQ5NzBiNzRhZDZmOWJjNDk=
+        base64-secret: MWJjMDE0NjYyNzNlODE1M2I4ZjViYzk0OWVjZWI5ZDdlYmM0ZmZkYjJjZGFiNGMxMzgwZDdjN2ZhNDFkZjBjNmYxMmYxYTA3MjQwYjgzZDAzOWNhZDBiOWI0ZWQ1MDU4ZDNhYTFjMjQ0YzhjYjIxMGFhNTdlZWQ5N2EyMjU3MmM=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
